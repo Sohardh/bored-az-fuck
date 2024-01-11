@@ -4,7 +4,6 @@ import {useEffect, useRef, useState} from 'react';
 function App() {
   const elementRef = useRef(null);
   const [os, setOs] = useState([]);
-  const [height, setHeight] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [noOfOs, setNoOfOs] = useState(0);
 
@@ -15,8 +14,6 @@ function App() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, {passive: true});
-    setHeight(elementRef.current.offsetHeight);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -34,7 +31,6 @@ function App() {
     setOs(_os);
   }, [noOfOs]);
 
-  console.log(height);
   return (
       <div className="App" ref={elementRef}>
         <p className={'b'}>B</p>
